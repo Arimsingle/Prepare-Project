@@ -1,50 +1,91 @@
-import { useEffect } from "react"
-import Main_topbar from "../layout/Main_topbar"
-import { Empty } from 'antd';
-import { Typography } from 'antd';
-import { Menu, Carousel, Card, Row, Col, Rate } from 'antd'
-import Front_cover from "../components/Front_cover";
-import Back_cover from "../components/ฺBack_cover";
-const { Title } = Typography;
+import { useState } from 'react';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import {
+    CarOutlined,
+    ShoppingCartOutlined,
+    SolutionOutlined,
+    SendOutlined,
+    UserOutlined,
+    ProfileOutlined,
+    HomeOutlined
+} from '@ant-design/icons';
+import Router from 'next/router'
+import Sign_in from './Sign_in'
+const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
+
 const Index = () => {
-    useEffect(() => {
-    })
-    function onChange(a, b, c) {
-        console.log(a, b, c);
-    }
+    const [collapsed, setCollapsed] = useState(false);
+    const onCollapse = () => {
+        console.log(collapsed);
+        setCollapsed(state => !state);
+    };
     return (
         <div>
             <div>
-                <div>
-                    <Main_topbar />
-                    <Title></Title>
-                    <Front_cover />
-                    <Front_cover />
-                    <Front_cover />
-                    <Title></Title>
-                    <Back_cover/>
-                    <Title></Title>
-                    <Empty />
-                    <div>
-                    </div>
-                </div>
+                <Layout style={{ minHeight: '100vh' }}>
+                    <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+                        <div className="d-flex justify-content-center"><img src="https://i.pinimg.com/originals/fb/3f/e7/fb3fe7a71631c34341ea4ccb98cf24b3.png" width="80px" /></div>
+                        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                            <Menu.Item key="1">
+                                <HomeOutlined />
+                                <span>HOME</span>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                                <ShoppingCartOutlined />
+                                <span>SERVICE</span>
+                            </Menu.Item>
+                            <SubMenu key="sub1" title={<span><CarOutlined /><span>CARS</span></span>}>
+                                <Menu.Item key="3">TOYOTA</Menu.Item>
+                                <Menu.Item key="4">MAZDA</Menu.Item>
+                                <Menu.Item key="5">BMW</Menu.Item>
+                            </SubMenu>
+                            <SubMenu key="sub2" title={<span><ProfileOutlined /><span>PROMOTION</span></span>}>
+                                <Menu.Item key="6">Team 1</Menu.Item>
+                                <Menu.Item key="8">Team 2</Menu.Item>
+                            </SubMenu>
+                            <Menu.Item key="9">
+                                <SolutionOutlined />
+                                <span>ABOUT</span>
+                            </Menu.Item>
+                            <Menu.Item key="10">
+                                <SendOutlined />
+                                <span>CONTACT</span>
+                            </Menu.Item>
+                            <Menu.Item key="11">
+                                <UserOutlined onClick={() => Router.push('/Register')} />
+                                <span onClick={() => Router.push('/Register')}>LOGIN</span>
+                            </Menu.Item>
+                        </Menu>
+                    </Sider>
+                    <Layout className="site-layout">
+                        <Content style={{ margin: '0 16px' }}>
+                            <Breadcrumb style={{ margin: '16px 0' }}>
+                                <Breadcrumb.Item>User</Breadcrumb.Item>
+                                <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                            </Breadcrumb>
+                            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+                                Bill is a cat.
+                            </div>
+                        </Content>
+                        <Footer style={{ textAlign: 'center' }}>ARIMA DEVERLOPER</Footer>
+                    </Layout>
+                </Layout>
             </div>
-            <style jsx global>{`
-            .site-card-border-less-wrapper {
-                box-shadow: 0 0 0.3cm rgba(0,0,0,0.15);
-                display:flex;
-                width:550px;
-            }
-
-            `}</style>
             <style jsx>{`
-            .text-p{
-                display:flex;
-                
+            #components-layout-demo-side{
+                height: 32px;
+                background: rgba(255, 255, 255, 0.2);
+                margin: 16px;
             }
-            .text-c{
-                display:flex;
-                flex-direction:column;
+            .site-layout-background {
+                background: #fff;
+            }
+            .site-layout{
+                background: #fff;
+            }
+            .test{
+                padding:0px;
             }
             `}</style>
         </div>

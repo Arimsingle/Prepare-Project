@@ -1,5 +1,5 @@
-import Webcam from "../components/Webcam"
-import Main_topbar from "../layout/Main_topbar"
+import Webcam from "../src/components/Webcam"
+import Main_topbar from "../src/layout/Main_topbar"
 const Action = () => {
     return (
         <div>

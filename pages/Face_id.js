@@ -1,7 +1,5 @@
 import { Button, Form } from 'react-bootstrap';
-import { UserOutlined, MailOutlined, KeyOutlined } from '@ant-design/icons';
-import Topbar from '../layout/Topbar'
-import Router from 'next/router'
+import Topbar from '../src/layout/Topbar'
 import { useState, useEffect } from 'react';
 import Link from 'next/link'
 const Face_id = () => {
@@ -9,26 +7,30 @@ const Face_id = () => {
     }, [])
     return (
         <div>
-            <Link href='/'>
-                <a className='link'>HOME</a>
-            </Link>
-            <div className="d-flex justify-content-center">
-                <div className="card">
-                    <div className="box">
-                        <div className="content-between">
-                            <div className="flex-start">
-                                <div className="card-link">
-                                    <Topbar />
+            <div className="position">
+                <Link href='/'>
+                    <a className='link'>HOME</a>
+                </Link>
+            </div>
+            <div className="second-body">
+                <div className="d-flex justify-content-center">
+                    <div className="card">
+                        <div className="box">
+                            <div className="content-between">
+                                <div className="flex-start">
+                                    <div className="card-link">
+                                        <Topbar />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="form">
-                                <Form>
-                                    <Button variant="primary" type="submit" size="lg">Face Scan</Button>
-                                </Form>
-                            </div>
-                            <div className="d-flex justify-content-center">
-                                Status
+                                <div className="form">
+                                    <Form>
+                                        <Button variant="primary" type="submit" size="lg">Face Scan</Button>
+                                    </Form>
+                                </div>
+                                <div className="d-flex justify-content-center">
+                                    Status
                         </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,13 +38,16 @@ const Face_id = () => {
             <style jsx global>{`
             body {
                 margin: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 }
             `}</style>
             <style jsx>{`
-            .content-between{
+            .position{
+                text-align:center;
+            }
+            .second-body{
+                display:flex;
+                align-items:center;
+                justify-content:center;
             }
             .flex-start{
                 display:flex;
