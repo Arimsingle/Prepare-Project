@@ -1,11 +1,11 @@
-import { Form, Input, Select, InputNumber, Card, Tabs } from 'antd';
-import { UnlockTwoTone, MailTwoTone, IdcardTwoTone, SmileTwoTone } from '@ant-design/icons';
-import { Upload, Button } from 'antd';
+import { Form, Input, Select, InputNumber, Card, Tabs, Upload, Button } from 'antd';
+import { UnlockTwoTone, MailTwoTone, IdcardTwoTone, SmileTwoTone, UploadOutlined } from '@ant-design/icons';
 import { bindActionCreators } from 'redux';
 import { useSelector, useDispatch } from 'react-redux';
 import { usersActions } from '../src/redux/user/action'
 import { formActions } from '../src/redux/form/action'
 import { useState, useEffect } from 'react';
+import Upload_img from './Upload'
 import Router from 'next/router'
 const { Option } = Select;
 const { TabPane } = Tabs;
@@ -13,22 +13,7 @@ const Register = () => {
     const onFinish = values => {
         console.log('Received values of form: ', values);
     };
-    const fileList = [
-        {
-            uid: '-1',
-            name: 'xxx.png',
-            status: 'done',
-            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-        {
-            uid: '-2',
-            name: 'xxx.png',
-            status: 'done',
-            url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            thumbUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        },
-    ];
+    const fileList = [];
 
     const props = {
         action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -39,10 +24,9 @@ const Register = () => {
     const actionsForm = bindActionCreators(formActions, useDispatch());
     const form = useSelector(state => state.form)
     const users = useSelector(state => state.users)
-    console.log(form)
-    console.log(users)
     useEffect(() => {
-    }, [])
+        console.log(fileList)
+    }, [fileList])
     const onChange = (value) => {
         actionsForm.onChangeAge(value);
     }
@@ -112,7 +96,7 @@ const Register = () => {
                                                             <Button type="primary" htmlType="submit" className="mt-3">
                                                                 SIGN UP
                                                             </Button>
-                                                            <Button type="primary" className="mt-3" onClick={()=>Router.push('/Sign_in')}>
+                                                            <Button type="primary" className="mt-3" onClick={() => Router.push('/Sign_in')}>
                                                                 LOGIN PAGE
                                                             </Button>
                                                         </div>
@@ -129,15 +113,13 @@ const Register = () => {
                                             <p style={{ color: "#8c8c8c" }}>Upload your face more than 12 pictuer</p>
                                         </div>
                                         <div>
-                                            <Upload {...props}>
-                                            </Upload>
-                                            <br />
+                                            <Upload_img />
                                         </div>
                                         <div className="d-flex justify-content-between">
                                             <Button type="primary" htmlType="submit" className="mt-3">
                                                 TRAIN
                                             </Button>
-                                            <Button type="primary" className="mt-3" onClick={()=>Router.push('/Sign_in')}>
+                                            <Button type="primary" className="mt-3" onClick={() => Router.push('/Sign_in')}>
                                                 LOGIN PAGE
                                             </Button>
                                         </div>

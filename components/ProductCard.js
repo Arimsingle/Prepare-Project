@@ -2,7 +2,12 @@ import { Card, Col, Row, Avatar } from 'antd';
 import { Button, ButtonGroup } from 'react-bootstrap';
 const { Meta } = Card;
 import { message } from 'antd';
+import Router from 'next/router'
 const ProductCard = () => {
+    const Open_Tracking = () => {
+        // message.success('กดควบคุมด้วยมือ')
+        Router.push('/Hand_Tracking')
+    }
     return (
         <div className="constrain">
             <div className="d-flex justify-content-center">
@@ -27,7 +32,7 @@ const ProductCard = () => {
                                     <div className="btn">
                                         <ButtonGroup>
                                             <Button onClick={() => message.success('กดซื้อ')}>ซื้อ</Button>
-                                            <Button onClick={() => message.success('กดควบคุมด้วยมือ')}>ควบคุมด้วยมือ</Button>
+                                            <Button onClick={Open_Tracking}>ควบคุมด้วยมือ</Button>
                                             <Button onClick={() => message.success('กดตั้งค่า')}>ตั้งค่า</Button>
                                         </ButtonGroup>
                                     </div>

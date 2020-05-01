@@ -11,17 +11,10 @@ import {
     ShoppingOutlined
 } from '@ant-design/icons';
 import Router from 'next/router'
-import { Carousel } from 'react-bootstrap';
-
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-const Index = () => {
-    const [index, setIndex] = useState(0);
-
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
+const Nav_Layout = () => {
     const [collapsed, setCollapsed] = useState(false);
     const onCollapse = () => {
         console.log(collapsed);
@@ -37,14 +30,14 @@ const Index = () => {
                             <Menu.Item key="1">
                                 <div style={{ display: "flex" }}>
                                     <span className="nav-logo"><HomeOutlined /></span>
-                                    {collapsed === false && <span>หน้าหลัก</span>}
+                                    <span>หน้าหลัก</span>
                                 </div>
 
                             </Menu.Item>
                             <Menu.Item key="2">
                                 <div style={{ display: "flex" }} onClick={() => Router.push('/ProductList')}>
                                     <span className="nav-logo"> <ShoppingCartOutlined /></span>
-                                    {collapsed === false && <span>บริการ</span>}
+                                    <span>บริการ</span>
                                 </div>
                             </Menu.Item>
                             <SubMenu key="sub1" title={<div style={{ display: "flex" }}><span className="nav-logo"><CarOutlined /><span>รถ</span></span></div>}>
@@ -59,19 +52,19 @@ const Index = () => {
                             <Menu.Item key="9">
                                 <div style={{ display: "flex" }}>
                                     <span className="nav-logo"><SolutionOutlined /></span>
-                                    {collapsed === false && <span>เกี่ยวกับ</span>}
+                                    <span>เกี่ยวกับ</span>
                                 </div>
                             </Menu.Item>
                             <Menu.Item key="10">
                                 <div style={{ display: "flex" }}>
                                     <span className="nav-logo"><SendOutlined /></span>
-                                    {collapsed === false && <span>ติดต่อ</span>}
+                                    <span>ติดต่อ</span>
                                 </div>
                             </Menu.Item>
                             <Menu.Item key="11">
                                 <div style={{ display: "flex" }}>
                                     <span className="nav-logo"> <UserOutlined onClick={() => Router.push('/Register')} /></span>
-                                    {collapsed === false && <span onClick={() => Router.push('/Register')}>เข้าสู่ระบบ</span>}
+                                    <span onClick={() => Router.push('/Register')}>เข้าสู่ระบบ</span>
                                 </div>
                             </Menu.Item>
                         </Menu>
@@ -86,46 +79,7 @@ const Index = () => {
                                 </div>
                             </Breadcrumb>
                             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                                <div>
-                                    <Carousel activeIndex={index} onSelect={handleSelect}>
-                                        <Carousel.Item>
-                                            <img
-                                                className="d-block w-100"
-                                                src="https://gamingroom.co/wp-content/uploads/2017/11/CyCYOArUoAA2T6d.jpg"
-                                                alt="First slide"
-                                            />
-                                            <Carousel.Caption>
-                                                <h3>First slide label</h3>
-                                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                            </Carousel.Caption>
-                                        </Carousel.Item>
-                                        <Carousel.Item>
-                                            <img
-                                                className="d-block w-100"
-                                                src="https://gamingroom.co/wp-content/uploads/2017/11/CyCYOArUoAA2T6d.jpg"
-                                                alt="Second slide"
-                                                width="500px"
-                                            />
-                                            <Carousel.Caption>
-                                                <h3>Second slide label</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                            </Carousel.Caption>
-                                        </Carousel.Item>
-                                        <Carousel.Item>
-                                            <img
-                                                className="d-block w-100"
-                                                src="https://gamingroom.co/wp-content/uploads/2017/11/CyCYOArUoAA2T6d.jpg"
-                                                alt="Second slide"
-                                            />
-                                            <Carousel.Caption>
-                                                <h3>Third slide label</h3>
-                                                <p>
-                                                    Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                                                </p>
-                                            </Carousel.Caption>
-                                        </Carousel.Item>
-                                    </Carousel>
-                                </div>
+                                Home Page
                             </div>
                         </Content>
                         <Footer style={{ textAlign: 'center' }}>ARIMA DEVERLOPER</Footer>
@@ -158,4 +112,4 @@ const Index = () => {
         </div>
     )
 }
-export default Index;
+export default Nav_Layout;
