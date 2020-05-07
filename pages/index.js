@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import * as tf from '@tensorflow/tfjs';
+import * as tmImage from '@teachablemachine/image';
+
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
     CarOutlined,
@@ -91,7 +94,7 @@ const Index = () => {
                                         <Carousel.Item>
                                             <img
                                                 className="d-block w-100"
-                                                src="https://gamingroom.co/wp-content/uploads/2017/11/CyCYOArUoAA2T6d.jpg"
+                                                src="https://wallpaperaccess.com/full/1246177.jpg"
                                                 alt="First slide"
                                             />
                                             <Carousel.Caption>
@@ -102,7 +105,7 @@ const Index = () => {
                                         <Carousel.Item>
                                             <img
                                                 className="d-block w-100"
-                                                src="https://gamingroom.co/wp-content/uploads/2017/11/CyCYOArUoAA2T6d.jpg"
+                                                src="https://wallpaperaccess.com/full/1246177.jpg"
                                                 alt="Second slide"
                                                 width="500px"
                                             />
@@ -114,7 +117,7 @@ const Index = () => {
                                         <Carousel.Item>
                                             <img
                                                 className="d-block w-100"
-                                                src="https://gamingroom.co/wp-content/uploads/2017/11/CyCYOArUoAA2T6d.jpg"
+                                                src="https://wallpaperaccess.com/full/1246177.jpg"
                                                 alt="Second slide"
                                             />
                                             <Carousel.Caption>

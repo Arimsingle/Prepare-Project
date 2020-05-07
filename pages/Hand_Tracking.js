@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
+import { Button } from 'antd';
 // import * as THREE from 'three';
+import { Card } from 'antd';
+
 const Hand_Tracking = () => {
     const [pixel, setPixel] = useState(null)
     const URL = "https://teachablemachine.withgoogle.com/models/eC_CB8mU/";
@@ -41,7 +44,7 @@ const Hand_Tracking = () => {
                     }
                 }
             })
-            setShow({ X: parseInt(pose.keypoints[9].position.x) - 30, Y: parseInt(pose.keypoints[9].position.y) - 80 })
+            setShow({ X: parseInt(pose.keypoints[9].position.x) + 550, Y: parseInt(pose.keypoints[9].position.y) - 80 })
         }
         const prediction = await model.predict(posenetOutput);
         for (let i = 0; i < maxPredictions; i++) {
@@ -70,22 +73,31 @@ const Hand_Tracking = () => {
     return (
         <div>
             <div>
-                <button onClick={init}> 555 </button>
-                <div className="hide">
-                    <div id="label-container"></div>
+                <div className="d-flex justify-content-center">
+                    <Card style={{ width: 800 }}>
+                        <div>
+                            <div className="hide">
+                                <div id="label-container"></div>
+                            </div>
+                            <div><canvas id="canvas"></canvas></div>
+                            <div className="alligator-show-box2">
+                            </div>
+                            <h1>Position:X {show.X}</h1>
+                            <h1>Position:Y {show.Y}</h1>
+                            <Button type="primary" onClick={init}> Open AI Tracking </Button>
+                        </div>
+                        <div>
+                            {/* <img className='banner' src='https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/01/10/487792/197726/low_poly_car_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2086706_o.png' /> */}
+                            <div className="antion2">
+                                <img scr="https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/01/10/487792/197726/low_poly_car_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2086706_o.png" />
+                            </div>
+                            <div className="antion"></div>
+                        </div>
+                    </Card>
+                    <img className='banner' src='https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/01/10/487792/197726/low_poly_car_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2086706_o.png' />
                 </div>
-                <div><canvas id="canvas"></canvas></div>
-                <div className="alligator-show-box2">
-                </div>
-                <h1>Position:X {show.X}</h1>
-                <h1>Position:Y {show.Y}</h1>
             </div>
-            <img className='banner' src='https://www.thairath.co.th/media/dFQROr7oWzulq5FZYjcZjekOTsB2pHQR2rTC5kP2dgLZ8cEAu6XO6hi4hHrgwwqZd36.jpg' />
-            <div className="antion2">
-                <img scr="https://i.pinimg.com/originals/14/e5/13/14e513e4b3f04be4a1a235417e290701.png" />
-            </div>
-            <div className="antion">
-            </div>
+
             <style jsx>{`
             .banner{
                 position: absolute;

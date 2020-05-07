@@ -18,8 +18,4 @@ class MyApp extends App {
         )
     }
 }
-// export default function MyApp({ Component, pageProps }) {
-//   return <Component {...pageProps} />
-// }
-
 export default withRedux(store)(MyApp);

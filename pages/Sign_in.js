@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import * as faceapi from 'face-api.js';
-import * as tmImage from '@teachablemachine/image';
-import axios from 'axios'
 import { Form, Input, Select, InputNumber, Card, Tabs } from 'antd';
 import { UnlockTwoTone, MailTwoTone, IdcardTwoTone, SmileTwoTone } from '@ant-design/icons';
 import { Upload, Button } from 'antd';
@@ -18,13 +16,13 @@ const Sign_in = () => {
     };
     const [name, setName] = useState('');
     async function Webcam() {
-        const video = document.getElementById('video')
         Promise.all([
             faceapi.nets.tinyFaceDetector.loadFromUri('/static/models'),
             faceapi.nets.faceLandmark68Net.loadFromUri('/static/models'),
             faceapi.nets.faceRecognitionNet.loadFromUri('/static/models'),
             faceapi.nets.ssdMobilenetv1.loadFromUri('/static/models'),
         ]).then(startVideo)
+        const video = document.getElementById('video')
         function startVideo() {
             navigator.getUserMedia(
                 { video: {} },
@@ -54,7 +52,6 @@ const Sign_in = () => {
                     results.forEach((result, i) => {
                         const box = resizedDetections[i].detection.box
                         setName(result.toString())
-                        /* Draw Box */
                         //const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
                         //drawBox.draw(canvas)
                     })
@@ -63,35 +60,24 @@ const Sign_in = () => {
             }, 100)
         })
         function loadLabeledImages() {
-            const labels = ['Arim']
+            const labels = ['Arim', 'Ai','Ai2']
             return Promise.all(
                 labels.map(async label => {
                     const descriptions = []
-                    for (let i = 1; i <= 1; i++) {
+                    for (let i = 1; i <= 7; i++) {
                         const img = await faceapi.fetchImage(`/static/images/${label}/${i}.jpg`)
                         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
                         descriptions.push(detections.descriptor)
                     }
-                    if (label == 'Tum') {
-                        label = 'ไอบอลเด็กกะโปก'
-                        return new faceapi.LabeledFaceDescriptors(label, descriptions)
-                    }
-                    else {
-                        return new faceapi.LabeledFaceDescriptors(label, descriptions)
-                    }
-
+                    return new faceapi.LabeledFaceDescriptors(label, descriptions)
                 })
             )
         }
     }
-    const actionsUser = bindActionCreators(usersActions, useDispatch());
+    // const actionsUser = bindActionCreators(usersActions, useDispatch());
     const actionsForm = bindActionCreators(formActions, useDispatch());
     const form = useSelector(state => state.form)
     const users = useSelector(state => state.users)
-    console.log(form)
-    console.log(users)
-    useEffect(() => {
-    }, [])
     const onChange = (value) => {
         actionsForm.onChangeAge(value);
     }
@@ -127,7 +113,7 @@ const Sign_in = () => {
                                                             <Button type="primary" htmlType="submit" className="mt-3">
                                                                 LOGIN
                                                             </Button>
-                                                            <Button type="primary" className="mt-3" onClick={()=>Router.push('/Register')}>
+                                                            <Button type="primary" className="mt-3" onClick={() => Router.push('/Register')}>
                                                                 REGISTER PAGE
                                                             </Button>
                                                         </div>
@@ -154,7 +140,7 @@ const Sign_in = () => {
                                             <Button type="primary" htmlType="submit" className="mt-3">
                                                 LOGIN
                                             </Button>
-                                            <Button type="primary" className="mt-3" onClick={()=>Router.push('/Register')}>
+                                            <Button type="primary" className="mt-3" onClick={() => Router.push('/Register')}>
                                                 REGISTER PAGE
                                             </Button>
                                         </div>
